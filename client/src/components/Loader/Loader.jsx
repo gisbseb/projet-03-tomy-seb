@@ -1,7 +1,9 @@
+import "./loader.scss";
+
 const Loader = () => {
   return (
-    <div>
-      <h1>Loading</h1>
+    <div className="loader-container">
+      <span class="loader"></span>
     </div>
   );
 };

@@ -1,7 +1,11 @@
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  background: var(--light-red);
+  padding: 0.5em;
   ul {
     display: flex;
-    color: red;
+
     align-items: center;
     justify-content: center;
     gap: 2em;
@@ -17,6 +21,10 @@
     li:has(.active) {
       pointer-events: none;
       opacity: 0.5;
+    }
+
+    a {
+      color: white;
     }
   }
 }

@@ -1,17 +1,21 @@
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout.jsx";
-import Collaborateurs from "./features/Homepage/Collaborateurs/Collaborateurs.jsx";
+import Collaborateurs from "./features/Collaborateurs/Collaborateurs.jsx";
+import Homepage from "./features/Homepage/Homepage.jsx";
+import Account from "./features/Account/Account.jsx";
+import UpdateUser from "./features/UpdateUser.jsx/UpdateUser.jsx";
+import Login from "./features/Login/Login.jsx";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<p>Login</p>} />
-        <Route path="home" element={<p>HOMEPAGE - ICI GET RANDOM USER</p>} />
+        <Route index element={<Login />} />
+        <Route path="home" element={<Homepage />} />
         <Route path="collaborateurs" element={<Collaborateurs />} />
-        <Route path="compte" element={<p>Profil - Get user/id</p>}>
-          <Route path="update/:id" element={<p>Update user</p>} />
+        <Route path="compte" element={<Account />}>
+          <Route path="update/:id" element={<UpdateUser />} />
         </Route>
       </Route>
     </Routes>

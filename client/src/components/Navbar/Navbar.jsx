@@ -3,10 +3,8 @@ import "./navbar.scss";
 const Navbar = () => {
   return (
     <nav className="navbar">
+      <div>logo</div>
       <ul>
-        <li>
-          <NavLink to="/">Connexion</NavLink>
-        </li>
         <li>
           <NavLink to="/home">Homepage</NavLink>
         </li>
@@ -18,6 +16,15 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink>Deconnexion</NavLink>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <button className="bg-red">
+            <NavLink to="/" className="txt-white">
+              Connexion
+            </NavLink>
+          </button>
         </li>
       </ul>
     </nav>
