@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import User from "../models/UserModel.js";
+import jwt from "jsonwebtoken";
 
 export const getAllUsers = async (req, res, next) => {
   let users;
@@ -16,8 +17,7 @@ export const getAllUsers = async (req, res, next) => {
   res.json({ users: users.map((user) => user.toObject({ getters: true })) });
 };
 
-export const createUser = async (req, res, next) => {
-  console.log();
+export const register = async (req, res, next) => {
   const {
     id,
     gender,
@@ -61,11 +61,36 @@ export const createUser = async (req, res, next) => {
   try {
     await newUser.save();
   } catch (err) {
-    const error = new HttpError(
-      "Echec lors de la création du compte, réessayez plus tard.",
-      500
-    );
-    return next(error);
+    return res.status(500).json({
+      err: "Echec lors de la création du compte, réessayez plus tard. ",
+    });
   }
   res.status(201).json({ user: newUser.toObject({ getters: true }) });
+};
+
+export const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  let user;
+
+  user = await User.findOne({ email: email.toLowerCase() });
+
+  if (!user) {
+    return res
+      .status(404)
+      .json({ message: "L'email que vous avez rentré n'existe pas." });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res
+      .status(404)
+      .json({ message: "L'email et le mot de passe ne corresponde pas." });
+  }
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  delete user.password;
+  res.status(200).json({
+    message: "Logged In",
+    user: user.toObject({ getters: true }),
+    token: token,
+  });
 };
