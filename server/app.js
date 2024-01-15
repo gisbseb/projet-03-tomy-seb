@@ -3,10 +3,17 @@ import dotenv from "dotenv";
 import dbConnect from "./config/dbConnect.js";
 
 import userRoutes from "./routes/UserRoutes.js";
-
+import cors from "cors";
 // CONFIG
 dotenv.config();
 const app = express();
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
+  })
+);
 
 //ROUTES
 app.get("/", (req, res) => {
