@@ -1,0 +1,22 @@
+.navbar {
+  ul {
+    display: flex;
+    color: red;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+
+    li {
+      transition: all 0.2s;
+    }
+
+    li:hover {
+      opacity: 0.5;
+    }
+    .active,
+    li:has(.active) {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+}
