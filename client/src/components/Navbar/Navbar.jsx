@@ -11,17 +11,19 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div>logo</div>
-      <ul>
-        <li>
-          <NavLink to="/home">Homepage</NavLink>
-        </li>
-        <li>
-          <NavLink to="/add">add user</NavLink>
-        </li>
-        <li>
-          <NavLink to="/collaborateurs">Collaborateurs</NavLink>
-        </li>
-      </ul>
+      {isLoggedIn && (
+        <ul>
+          <li>
+            <NavLink to="/home">Homepage</NavLink>
+          </li>
+          <li>
+            <NavLink to="/add">add user</NavLink>
+          </li>
+          <li>
+            <NavLink to="/collaborateurs">Collaborateurs</NavLink>
+          </li>
+        </ul>
+      )}
       <ul>
         {isLoggedIn ? (
           <>

@@ -18,7 +18,6 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const register = async (req, res, next) => {
-  console.log(req.body);
   const {
     id,
     gender,
@@ -36,6 +35,7 @@ export const register = async (req, res, next) => {
   } = req.body;
 
   let existingUser = await User.findOne({ email: email });
+  console.log(existingUser);
   if (existingUser) {
     return res.status(400).json({ err: "Cet Email est déja utilisé" });
   }
