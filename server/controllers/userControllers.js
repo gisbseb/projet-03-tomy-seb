@@ -18,6 +18,7 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const register = async (req, res, next) => {
+  console.log(req.body);
   const {
     id,
     gender,
@@ -61,6 +62,7 @@ export const register = async (req, res, next) => {
   try {
     await newUser.save();
   } catch (err) {
+    console.log(err);
     return res.status(500).json({
       err: "Echec lors de la création du compte, réessayez plus tard. ",
     });
@@ -68,7 +70,7 @@ export const register = async (req, res, next) => {
   res.status(201).json({ user: newUser.toObject({ getters: true }) });
 };
 
-export const login = async (req, res, next) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
   let user;
 

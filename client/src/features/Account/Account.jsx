@@ -10,7 +10,7 @@ const Account = () => {
 
   let content;
   if (loading) content = <Loader />;
-  if (data) content = <p>User charger</p>;
+  if (user) content = <p>User charger</p>;
   if (error) content = <p>Error</p>;
   return <div>{content}</div>;
 };

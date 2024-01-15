@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-const useFetch = (url, config = {}) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,6 @@ const useFetch = (url, config = {}) => {
       setLoading(true);
       const response = await fetch(url, {
         credentials: "include",
-        ...config,
       });
       const result = await response.json();
       setData(result);
@@ -19,7 +18,7 @@ const useFetch = (url, config = {}) => {
     } finally {
       setLoading(false);
     }
-  }, [url, config]);
+  }, [url]);
 
   useEffect(() => {
     fetchData();

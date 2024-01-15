@@ -7,7 +7,9 @@ import userRoutes from "./routes/UserRoutes.js";
 import cors from "cors";
 // CONFIG
 dotenv.config();
+dbConnect();
 const app = express();
+
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -25,7 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/api", userRoutes);
 
-dbConnect();
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });

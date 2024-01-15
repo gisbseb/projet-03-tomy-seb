@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import useAutorize from "../../hook/useAutorise";
+import { useAuth } from "../../context/AuthContext";
 
 const Card = ({ user, handleDelete }) => {
-  const { isAdmin } = useAutorize();
+  const { isAdmin } = useAuth();
 
   return (
     <div className="card">

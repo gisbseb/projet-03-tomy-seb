@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./login.scss";
 import { REGEX } from "../../utils/regex";
 import { useAuth } from "../../context/AuthContext";
+import { Navigate } from "react-router-dom";
 const Login = () => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
-  const { handleLogin } = useAuth();
+  const { handleLogin, isLoggedIn } = useAuth();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -20,8 +21,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin();
+    handleLogin(userData);
   };
+
+  if (isLoggedIn) {
+    return <Navigate to="/home" />;
+  }
+
   return (
     <div className="login">
       <h1>Connexion</h1>
