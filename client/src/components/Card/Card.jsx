@@ -1,8 +1,32 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import "./card.scss";
+const calculateAge = (birthdate) => {
+  const today = new Date();
+  const birthDate = new Date(birthdate);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
+};
+
+const formatDate = (birthdate) => {
+  const date = new Date(birthdate);
+  const options = { month: "long", day: "numeric" };
+  return date.toLocaleDateString("fr-FR", options);
+};
 
 const Card = ({ user, handleDelete }) => {
   const { isAdmin } = useAuth();
+  const age = calculateAge(user.birthdate);
+  const formattedBirthdate = formatDate(user.birthdate);
 
   return (
     <div className="card">
@@ -13,15 +37,23 @@ const Card = ({ user, handleDelete }) => {
       />
       <div className="card-content">
         <h3>
-          {user.lastname} {user.firstname}
+          {user.lastname} {user.firstname}{" "}
+          <span className="txt-light">(Age: {age} years)</span>
         </h3>
-        <p>{user.birthdate}</p>
+        <ul>
+          <li>{user.email}</li>
+          <li>{user.phone}</li>
+          <li>Anniversaire: {formattedBirthdate}</li>
+        </ul>
+
         {isAdmin && (
           <div>
-            <NavLink to={"/update/" + user.id}>
-              <button>Modifier</button>
+            <NavLink to={"/collaborateurs/" + user._id}>
+              <button className="bg-red">éditer</button>
             </NavLink>
-            <button onClick={() => handleDelete(user)}>Supprimer</button>
+            <button className="bg-red" onClick={() => handleDelete(user)}>
+              Supprimer
+            </button>
           </div>
         )}
       </div>

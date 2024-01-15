@@ -6,7 +6,8 @@ import UpdateUser from "../Users/UpdateUser/UpdateUser";
 
 const Account = () => {
   return (
-    <div className="form-page">
+    <div className="page">
+      <h1>Modifier mon profil</h1>
       <UpdateUser />;
     </div>
   );

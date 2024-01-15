@@ -30,16 +30,12 @@ const UpdateUser = () => {
   };
 
   return (
-    <div>
-      <h1>Modifier mon profil</h1>
-
-      <UserForm
-        userData={userData}
-        handleChange={handleChange}
-        handleSubmit={handleUpdateUser}
-        showPassword={true}
-      />
-    </div>
+    <UserForm
+      userData={userData}
+      handleChange={handleChange}
+      handleSubmit={handleUpdateUser}
+      showPassword={true}
+    />
   );
 };
 

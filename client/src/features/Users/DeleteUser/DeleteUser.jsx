@@ -1,5 +1,5 @@
 const DeleteUser = () => {
-  return <div>Delete</div>;
+  return <div></div>;
 };
 
 export default DeleteUser;

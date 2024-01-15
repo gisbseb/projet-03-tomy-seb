@@ -1,17 +1,26 @@
-import Loader from "../../components/Loader/Loader";
-import useFetch from "../../hook/useFetch";
-import { FIND_USER_URL } from "../../utils/url";
-import { useParams } from "react-router-dom";
-const SingleCollaborateur = (id) => {
-  const { id } = useParams();
+import { useEffect } from "react";
+import UpdateUser from "../Users/UpdateUser/UpdateUser";
+const SingleCollaborateur = () => {
+  // const { id } = useParams();
 
-  const { data: user, loading, error } = useFetch(FIND_USER_URL + "/" + id);
+  // const { data: user, loading, error } = useFetch(FIND_USER_URL + "/" + id);
 
-  let content;
-  if (loading) content = <Loader />;
-  if (data) content = <p>User charger</p>;
-  if (error) content = <p>Error</p>;
-  return <div>{content}</div>;
+  // let content;
+  // if (loading) content = <Loader />;
+  // if (data) content = <p>User charger</p>;
+  // if (error) content = <p>Error</p>;
+  // return <div>{content}</div>;
+
+  useEffect(() => {
+    console.log("ici");
+  }, []);
+  return (
+    <div className="page">
+      <h1>Modifier le collaborateurs</h1>
+
+      <UpdateUser />
+    </div>
+  );
 };
 
 export default SingleCollaborateur;

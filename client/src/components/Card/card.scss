@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+  box-shadow: 2px 2px 4px black;
+  width: fit-content;
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: left;
+  }
+}

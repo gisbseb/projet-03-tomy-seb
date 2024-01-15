@@ -4,8 +4,6 @@ import UserForm from "../../../components/UserForm/userForm";
 import { useAuth } from "../../../context/AuthContext";
 
 const AddUser = () => {
-  const { isAdmin } = useAuth();
-
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -46,7 +44,7 @@ const AddUser = () => {
   };
 
   return (
-    <div className="add-user form-page">
+    <div className="add-user page">
       <h1>Créer un utilisateur</h1>
       <span className="line"></span>
       <UserForm

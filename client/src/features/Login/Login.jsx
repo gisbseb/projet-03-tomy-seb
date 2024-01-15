@@ -29,7 +29,7 @@ const Login = () => {
   }
 
   return (
-    <div className="login form-page">
+    <div className="login page">
       <h1>Connexion</h1>
       <span className="line"></span>
       <p>

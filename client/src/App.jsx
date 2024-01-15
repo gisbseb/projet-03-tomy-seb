@@ -9,6 +9,7 @@ import Login from "./features/Login/Login.jsx";
 
 import { useAuth } from "./context/AuthContext.jsx";
 import AddUser from "./features/Users/AddUser/AddUser.jsx";
+import SingleCollaborateur from "./features/SingleCollaborateur/SingleCollaborateur.jsx";
 
 function App() {
   const { isLoggedIn, isAdmin } = useAuth();
@@ -20,6 +21,10 @@ function App() {
           <>
             <Route path="home" element={<Homepage />} />
             <Route path="collaborateurs" element={<Collaborateurs />} />
+            <Route
+              path="collaborateurs/:id"
+              element={<SingleCollaborateur />}
+            />
             <Route path="compte" element={<Account />}></Route>
           </>
         )}
