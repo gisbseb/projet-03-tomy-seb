@@ -1,5 +1,5 @@
 import express from "express";
-
+import bcrypt from "bcrypt";
 import User from "../models/UserModel.js";
 
 export const getAllUsers = async (req, res, next) => {
@@ -17,7 +17,7 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const createUser = async (req, res, next) => {
-  console.log("hello");
+  console.log();
   const {
     id,
     gender,
@@ -34,20 +34,9 @@ export const createUser = async (req, res, next) => {
     isAdmin,
   } = req.body;
 
-  let existingUser;
-  try {
-    existingUser = await User.findOne({ email: email.toLowerCase() });
-  } catch (err) {
-    const error = new HttpError(
-      "Signing up failed, please try again later.",
-      500
-    );
-    return next(error);
-  }
-
+  let existingUser = await User.findOne({ email: email });
   if (existingUser) {
-    const error = new HttpError("Cet Email est déja utilisé", 422);
-    return next(error);
+    return res.status(400).json({ err: "Cet Email est déja utilisé" });
   }
 
   const salt = await bcrypt.genSalt();
