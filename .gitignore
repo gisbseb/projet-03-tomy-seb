@@ -1,0 +1,46 @@
+# Fichiers temporaires
+*.swp
+*~
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+# Fichiers de logs
+*.log
+
+# Fichiers d'éditeurs
+.vscode/
+.idea/
+
+# Fichiers spécifiques à l'environnement de développement
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Fichiers spécifiques à la plateforme
+.DS_Store
+Thumbs.db
+
+# Fichiers de configuration
+.env
+
+# Dossiers générés lors de la construction ou de la compilation
+/build
+/dist
+/out
+
+# Fichiers de configuration spécifiques à certains outils
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.user
+*.sln.docstates
+
+# Dépendances
+/vendor
+/node_modules
+
+# Fichiers de build
+/build/
+/bin/
