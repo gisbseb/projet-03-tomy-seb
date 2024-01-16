@@ -8,7 +8,7 @@ const DeleteUser = ({ user, refetch }) => {
 
   const handleDeleteUser = async () => {
     try {
-      const res = await fetch(DELETE_USER_URL + "/" + user._id, {
+      await fetch(DELETE_USER_URL + "/" + user._id, {
         method: "DELETE",
         credentials: "include",
       });

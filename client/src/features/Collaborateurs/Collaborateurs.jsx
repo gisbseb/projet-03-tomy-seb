@@ -17,6 +17,7 @@ const Collaborateurs = () => {
   return (
     <div className="page">
       <h1>Liste des collaborateurs</h1>
+      <span className="line"></span>
       {content}
     </div>
   );

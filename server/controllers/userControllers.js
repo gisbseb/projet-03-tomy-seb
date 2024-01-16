@@ -111,7 +111,9 @@ export const login = async (req, res) => {
       .json({ message: "L'email et le mot de passe ne corresponde pas." });
   }
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
   delete user.password;
+
   res.status(200).json({
     message: "Logged In",
     user: user.toObject({ getters: true }),
@@ -156,8 +158,6 @@ export const updateUser = async (req, res, next) => {
     category,
     isAdmin,
   } = req.body;
-
-  console.log(req.body);
 
   const user = await User.findById(id);
   if (!user) {

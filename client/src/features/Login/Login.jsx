@@ -36,6 +36,17 @@ const Login = () => {
         Pour vous connecter à l'intranet, entrez votre identifiant et mot de
         passe
       </p>
+      <ul>
+        <li>
+          Identifiants: <br />
+          <span style={{ color: "red" }}>admin@gmail.com </span>
+        </li>
+        <li>
+          Mot de passe:
+          <br /> <span style={{ color: "red" }}>admin</span>
+        </li>
+      </ul>
+
       <form className="login-form form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email :</label>

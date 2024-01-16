@@ -3,11 +3,13 @@
   width: fit-content;
   margin: auto;
   flex-wrap: wrap;
+  overflow: hidden;
+
   .card-image {
-    object-fit: contain;
-    height: auto;
-    aspect-ratio: 2/1;
+    object-fit: cover;
+    width: auto;
   }
+
   .card-content {
     position: relative;
     display: flex;

@@ -6,7 +6,7 @@ import UpdateUser from "../Users/UpdateUser/UpdateUser";
 import { useAuth } from "../../context/AuthContext";
 
 const Account = () => {
-  const { currentUser, handleLogin } = useAuth();
+  const { currentUser } = useAuth();
 
   return (
     <div className="page">

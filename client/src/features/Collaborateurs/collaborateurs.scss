@@ -5,6 +5,22 @@
   margin: auto;
 }
 
+.filter-form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: auto;
+
+  select,
+  input,
+  option {
+    border: 1px solid grey;
+    outline: none;
+    padding: 0.5em;
+  }
+}
+
 @media (min-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr 1fr;
