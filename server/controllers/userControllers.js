@@ -3,6 +3,27 @@ import bcrypt from "bcrypt";
 import User from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
 
+export const getUser = async (req, res, next) => {
+  const { id } = req.params;
+  if (!!id) {
+    try {
+      const user = await User.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: "Utilisateur non trouvé" });
+      }
+      return res.json({ user: user });
+    } catch (error) {
+      return res
+        .status(500)
+        .json({ message: "Erreur lors de la recherche de l'utilisateur" });
+    }
+  } else {
+    const allUsers = await User.find({}, "-password");
+    const x = Math.floor(Math.random() * allUsers.length);
+    return res.status(200).json({ user: allUsers[x] });
+  }
+};
+
 export const getAllUsers = async (req, res, next) => {
   let users;
   try {

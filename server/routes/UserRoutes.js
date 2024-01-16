@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  getUser,
   getAllUsers,
   register,
   login,
@@ -9,7 +10,7 @@ import {
 
 const router = express.Router();
 
-// router.get("/", getRandomUser);
+router.get("/getUser/:id?", getUser);
 router.get("/getAllUsers", getAllUsers);
 router.post("/register", register);
 router.post("/login", login);
