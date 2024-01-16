@@ -7,14 +7,16 @@ import {
   deleteUser,
   updateUser,
 } from "../controllers/userControllers.js";
+import { verifyToken } from "../middleware/auth.js";
+import { isAdmin } from "../middleware/admin.js";
 
 const router = express.Router();
 
-router.get("/getUser/:id?", getUser);
-router.get("/getAllUsers", getAllUsers);
-router.post("/register", register);
+router.get("/getUser/:id?", verifyToken, getUser);
+router.get("/getAllUsers", verifyToken, getAllUsers);
+router.post("/register", verifyToken, isAdmin, register);
 router.post("/login", login);
-router.delete("/delete/:id", deleteUser);
-router.post("/updateUser", updateUser);
+router.delete("/delete/:id", verifyToken, isAdmin, deleteUser);
+router.post("/updateUser", verifyToken, updateUser);
 
 export default router;
