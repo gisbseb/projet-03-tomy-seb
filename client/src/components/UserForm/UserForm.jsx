@@ -4,15 +4,19 @@ const UserForm = ({ userData, handleChange, handleSubmit, showPassword }) => {
   const { isAdmin } = useAuth();
   return (
     <form className="form" onSubmit={handleSubmit}>
-      {/* {isAdmin && ( */}
-      <div className="form-group">
-        <label>Administrateur:</label>
-        <select name="isAdmin" value={userData.isAdmin} onChange={handleChange}>
-          <option value={true}>Oui</option>
-          <option value={false}>Non</option>
-        </select>
-      </div>
-      {/* )} */}
+      {isAdmin && (
+        <div className="form-group">
+          <label>Administrateur:</label>
+          <select
+            name="isAdmin"
+            value={userData.isAdmin}
+            onChange={handleChange}
+          >
+            <option value={true}>Oui</option>
+            <option value={false}>Non</option>
+          </select>
+        </div>
+      )}
 
       <div className="form-group">
         <label>Civilité:</label>
