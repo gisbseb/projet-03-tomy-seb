@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 
 export const getUser = async (req, res, next) => {
   const { id } = req.params;
+
   if (!!id) {
     try {
       const user = await User.findById(id);
@@ -155,7 +156,7 @@ export const updateUser = async (req, res, next) => {
     isAdmin,
   } = req.body;
 
-  user = await User.findById(id);
+  const user = await User.findById(id);
   if (!user) {
     return res.status(500).json({
       message: "Impossible de touver cette utilisateur",
