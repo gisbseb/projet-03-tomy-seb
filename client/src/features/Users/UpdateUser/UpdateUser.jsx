@@ -18,7 +18,7 @@ const UpdateUser = () => {
     category: "",
   });
 
-  const handleChange = () => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setUserData({ ...userData, [name]: value });

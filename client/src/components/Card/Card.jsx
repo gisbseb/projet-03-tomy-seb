@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "./card.scss";
+import DeleteUser from "../../features/Users/DeleteUser/DeleteUser";
 const calculateAge = (birthdate) => {
   const today = new Date();
   const birthDate = new Date(birthdate);
@@ -36,6 +37,7 @@ const Card = ({ user, handleDelete }) => {
         alt={`Portrait ${user.firstname} ${user.lastname}`}
       />
       <div className="card-content">
+        <p className="card-cat">{user.category}</p>
         <h3>
           {user.lastname} {user.firstname}{" "}
           <span className="txt-light">(Age: {age} years)</span>
@@ -51,9 +53,10 @@ const Card = ({ user, handleDelete }) => {
             <NavLink to={"/collaborateurs/" + user._id}>
               <button className="bg-red">éditer</button>
             </NavLink>
-            <button className="bg-red" onClick={() => handleDelete(user)}>
+            <DeleteUser />
+            {/* <button className="bg-red" onClick={() => handleDelete(user)}>
               Supprimer
-            </button>
+            </button> */}
           </div>
         )}
       </div>

@@ -136,7 +136,9 @@ const UserForm = ({ userData, handleChange, handleSubmit, showPassword }) => {
       </div>
 
       <div className="form-group">
-        <button type="submit">Envoyer</button>
+        <button type="submit" className="bg-red">
+          Envoyer
+        </button>
       </div>
     </form>
   );

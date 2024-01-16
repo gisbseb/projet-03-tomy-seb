@@ -10,6 +10,7 @@ import Login from "./features/Login/Login.jsx";
 import { useAuth } from "./context/AuthContext.jsx";
 import AddUser from "./features/Users/AddUser/AddUser.jsx";
 import SingleCollaborateur from "./features/SingleCollaborateur/SingleCollaborateur.jsx";
+import NotFound from "./features/NotFound/NotFound.jsx";
 
 function App() {
   const { isLoggedIn, isAdmin } = useAuth();
@@ -29,7 +30,7 @@ function App() {
           </>
         )}
         <Route path="add" element={<AddUser />} />
-        <Route path="*" element={<p>404</p>} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

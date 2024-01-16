@@ -3,6 +3,33 @@
   justify-content: space-between;
   background: var(--light-red);
   padding: 0.5em;
+
+  .logo {
+    height: 2em;
+  }
+
+  .flex-li {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 1em;
+
+    p,
+    a {
+      color: white;
+    }
+  }
+
+  .btn-logout {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    .icone {
+      height: 1.5em;
+      rotate: 180deg;
+    }
+  }
   ul {
     display: flex;
 
@@ -23,7 +50,8 @@
       opacity: 0.5;
     }
 
-    a {
+    a,
+    p {
       color: white;
     }
   }
