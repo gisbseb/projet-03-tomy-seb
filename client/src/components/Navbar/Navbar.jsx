@@ -3,7 +3,7 @@ import "./navbar.scss";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 const Navbar = () => {
-  const { isLoggedIn, isAdmin, currentUser } = useAuth();
+  const { isLoggedIn, isAdmin, currentUser, handleLogout } = useAuth();
 
   useEffect(() => {
     console.log(isLoggedIn);
@@ -43,7 +43,7 @@ const Navbar = () => {
             <li className="flex-li">
               <NavLink to="/compte">
                 {currentUser?.photo ? (
-                  <img src={currentUser.photo} />
+                  <img className="profil-pic" src={currentUser.photo} />
                 ) : (
                   "Mon compte"
                 )}
@@ -51,12 +51,11 @@ const Navbar = () => {
             </li>
             <li>
               {/* Ajoutez ici la logique de déconnexion */}
-              <NavLink to="/deconnexion">
-                <button className="bg-red btn-logout">
-                  <img className="icone arrow-icone" src="/icones/arrow.png" />
-                  Déconnexion
-                </button>
-              </NavLink>
+
+              <button className="bg-red btn-logout" onClick={handleLogout}>
+                <img className="icone arrow-icone" src="/icones/arrow.png" />
+                Déconnexion
+              </button>
             </li>
           </>
         ) : (

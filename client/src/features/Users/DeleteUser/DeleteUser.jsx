@@ -28,8 +28,7 @@ const DeleteUser = ({ user, refetch }) => {
         setIsOpen={setIsDeleteFurnitureOpen}
       >
         <h2>
-          Supprimer le collaborateur
-          {user.lastname} {user.firstname}
+          Supprimer {user.lastname} {user.firstname}
         </h2>
         <button onClick={handleDeleteUser} className="bg-red">
           Supprimer

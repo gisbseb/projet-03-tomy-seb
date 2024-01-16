@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import UserForm from "../../../components/UserForm/userForm";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UPDATE_USER_URL } from "../../../utils/url";
 
 const UpdateUser = ({ user, showPassword }) => {
   const [userData, setUserData] = useState({
     ...(user.user ? user.user : user),
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,8 +29,7 @@ const UpdateUser = ({ user, showPassword }) => {
         credentials: "include",
       });
 
-      const responseData = await response.json();
-      console.log(responseData);
+      navigate(-1);
     } catch (err) {}
     console.log("update");
   };

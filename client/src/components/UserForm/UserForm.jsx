@@ -8,8 +8,8 @@ const UserForm = ({ userData, handleChange, handleSubmit, showPassword }) => {
       <div className="form-group">
         <label>Administrateur:</label>
         <select name="isAdmin" value={userData.isAdmin} onChange={handleChange}>
-          <option value="1">Oui</option>
-          <option value="0">Non</option>
+          <option value={true}>Oui</option>
+          <option value={false}>Non</option>
         </select>
       </div>
       {/* )} */}
@@ -17,8 +17,8 @@ const UserForm = ({ userData, handleChange, handleSubmit, showPassword }) => {
       <div className="form-group">
         <label>Civilité:</label>
         <select name="gender" value={userData.gender} onChange={handleChange}>
-          <option value="Male">Homme</option>
-          <option value="Female">Femme</option>
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
         </select>
       </div>
       <div className="form-group">
@@ -70,15 +70,6 @@ const UserForm = ({ userData, handleChange, handleSubmit, showPassword }) => {
               type="password"
               name="password"
               value={userData.password}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>Confirmer le mot de passe :</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={userData.confirmPassword}
               onChange={handleChange}
             />
           </div>

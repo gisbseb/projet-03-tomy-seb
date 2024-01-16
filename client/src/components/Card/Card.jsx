@@ -61,6 +61,7 @@ const Card = ({ user, handleDelete, refetch }) => {
           <span className="txt-light">(Age: {age} years)</span>
         </h3>
         <ul>
+          <li>{user.city}</li>
           <li className="flex-li">
             <img className="icone" src="/icones/mail.png" />{" "}
             <p className="pink-txt little-txt">{user.email}</p>

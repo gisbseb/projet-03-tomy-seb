@@ -6,7 +6,8 @@ import UpdateUser from "../Users/UpdateUser/UpdateUser";
 import { useAuth } from "../../context/AuthContext";
 
 const Account = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, handleLogin } = useAuth();
+
   return (
     <div className="page">
       <h1>Modifier mon profil</h1>

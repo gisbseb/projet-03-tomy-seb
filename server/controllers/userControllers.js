@@ -156,35 +156,43 @@ export const updateUser = async (req, res, next) => {
     category,
     isAdmin,
   } = req.body;
+
   console.log(req.body);
-  return;
+
   const user = await User.findById(id);
   if (!user) {
     return res.status(500).json({
       message: "Impossible de touver cette utilisateur",
     });
   }
+
   // MDP
   const salt = await bcrypt.genSalt();
   const passwordHash = await bcrypt.hash(password, salt);
 
   //   user.id = user.id === id ? user.id : id;
-  user.gender = user.gender === gender ? user.gender : gender;
+  user.gender = gender ? gender : user.gender;
   user.firstname = user.firstname === firstname ? user.firstname : firstname;
   user.lastname = user.lastname === lastname ? user.lastname : lastname;
   user.email = user.email === email ? user.email : email;
-  user.password = user.password === passwordHash ? user.password : passwordHash;
+  // user.password = user.password === passwordHash ? user.password : passwordHash;
+  user.password = password === user.password ? user.password : passwordHash;
   user.phone = user.phone === phone ? user.phone : phone;
   user.birthdate = user.birthdate === birthdate ? user.birthdate : birthdate;
   user.city = user.city === city ? user.city : city;
   user.country = user.country === country ? user.country : country;
   user.photo = user.photo === photo ? user.photo : photo;
-  user.category = user.category === category ? user.category : category;
+  user.Category = category ? category : user.Category;
+
   user.isAdmin = user.isAdmin === isAdmin ? user.isAdmin : isAdmin;
 
   try {
     user.save();
+    return res.status(200).json({ user: user.toObject({ getters: true }) });
   } catch (err) {
-    return res.json("Utilisateur mis a jour");
+    console.log(err);
+    return res
+      .status(500)
+      .json("Erreur lors de la modification de l'utilisateur");
   }
 };

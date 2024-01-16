@@ -60,6 +60,12 @@
       opacity: 0.5;
     }
 
+    .profil-pic {
+      border-radius: 100%;
+      height: 2em;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
     a,
     p {
       color: white;
