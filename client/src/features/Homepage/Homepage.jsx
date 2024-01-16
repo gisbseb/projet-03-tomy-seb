@@ -8,7 +8,7 @@ const Homepage = () => {
 
   let content;
   if (loading) content = <Loader />;
-  if (user) content = <Card user={user.user} />;
+  if (user) content = <Card user={user.user} refetch={refetch} />;
   if (error) content = <p>error</p>;
 
   return (

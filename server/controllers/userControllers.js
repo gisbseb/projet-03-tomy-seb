@@ -121,6 +121,7 @@ export const login = async (req, res) => {
 
 export const deleteUser = async (req, res, next) => {
   const { id } = req.params;
+
   let user;
   try {
     user = await User.findByIdAndDelete(id);
@@ -141,7 +142,7 @@ export const deleteUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
   const {
-    id,
+    _id: id,
     gender,
     firstname,
     lastname,
@@ -155,7 +156,8 @@ export const updateUser = async (req, res, next) => {
     category,
     isAdmin,
   } = req.body;
-
+  console.log(req.body);
+  return;
   const user = await User.findById(id);
   if (!user) {
     return res.status(500).json({

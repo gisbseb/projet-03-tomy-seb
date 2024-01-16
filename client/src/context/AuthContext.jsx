@@ -7,6 +7,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleLogin = async (userData) => {
     try {
@@ -20,20 +21,23 @@ const AuthProvider = ({ children }) => {
       });
 
       const responseData = await response.json();
-      console.log(responseData.user);
+      setCurrentUser(responseData.user);
       setIsAdmin(responseData.user.isAdmin);
       setIsLoggedIn(true);
     } catch (err) {
       console.log(err);
     }
   };
-
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser]);
   return (
     <AuthContext.Provider
       value={{
         isAdmin,
         handleLogin,
         isLoggedIn,
+        currentUser,
       }}
     >
       {children}

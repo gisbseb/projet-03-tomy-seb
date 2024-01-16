@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { DELETE_USER_URL } from "../../../utils/url";
+import { DELETE_USER_URL, FIND_ALL_USERS_URL } from "../../../utils/url";
 import Modal from "../../../components/Modal/Modal.Jsx";
+import useFetch from "../../../hook/useFetch";
 
-const DeleteUser = ({ user }) => {
+const DeleteUser = ({ user, refetch }) => {
   const [isDeleteFurnitureOpen, setIsDeleteFurnitureOpen] = useState(false);
 
   const handleDeleteUser = async () => {
     try {
-      const res = await fetch(DELETE_USER_URL + "/" + user.id, {
+      const res = await fetch(DELETE_USER_URL + "/" + user._id, {
         method: "DELETE",
         credentials: "include",
       });
+      refetch();
+      setIsDeleteFurnitureOpen(false);
     } catch (err) {
       console.log(err);
     }
@@ -26,7 +29,7 @@ const DeleteUser = ({ user }) => {
       >
         <h2>
           Supprimer le collaborateur
-          {/* {user.lastname} {user.firstname} */}
+          {user.lastname} {user.firstname}
         </h2>
         <button onClick={handleDeleteUser} className="bg-red">
           Supprimer

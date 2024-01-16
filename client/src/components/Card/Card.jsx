@@ -37,7 +37,7 @@ const getColor = (category) => {
   }
 };
 
-const Card = ({ user, handleDelete }) => {
+const Card = ({ user, handleDelete, refetch }) => {
   const { isAdmin } = useAuth();
   const age = calculateAge(user.birthdate);
   const formattedBirthdate = formatDate(user.birthdate);
@@ -80,7 +80,7 @@ const Card = ({ user, handleDelete }) => {
             <NavLink to={"/collaborateur/" + user._id}>
               <button className="bg-red">éditer</button>
             </NavLink>
-            <DeleteUser />
+            <DeleteUser user={user} refetch={refetch} />
             {/* <button className="bg-red" onClick={() => handleDelete(user)}>
               Supprimer
             </button> */}
