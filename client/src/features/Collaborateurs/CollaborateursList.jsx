@@ -13,7 +13,7 @@ const CollaborateursList = ({ users, refetch }) => {
 
   useEffect(() => {
     setFilteredUsers(getFilteredUsers());
-  }, [filters]);
+  }, [filters, users]);
 
   const getFilteredUsers = () => {
     let filteredUsers = [...users];

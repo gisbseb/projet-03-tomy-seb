@@ -10,3 +10,29 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.search-form {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+  select,
+  input {
+    margin: 0 1em;
+    padding: 0.5em;
+    border: 1px solid grey;
+    outline: none;
+    opacity: 0.5;
+    transition: opacity 0.15;
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  select {
+    min-width: 6em;
+  }
+}
