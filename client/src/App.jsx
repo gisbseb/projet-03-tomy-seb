@@ -22,10 +22,7 @@ function App() {
           <>
             <Route path="home" element={<Homepage />} />
             <Route path="collaborateurs" element={<Collaborateurs />} />
-            <Route
-              path="collaborateurs/:id"
-              element={<SingleCollaborateur />}
-            />
+            <Route path="collaborateur/:id" element={<SingleCollaborateur />} />
             <Route path="compte" element={<Account />}></Route>
           </>
         )}

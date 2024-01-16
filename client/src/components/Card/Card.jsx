@@ -24,6 +24,19 @@ const formatDate = (birthdate) => {
   return date.toLocaleDateString("fr-FR", options);
 };
 
+const getColor = (category) => {
+  switch (category) {
+    case "Technique":
+      return "blue";
+    case "Client":
+      return "green";
+    case "Marketing":
+      return "pink";
+    default:
+      return "purple";
+  }
+};
+
 const Card = ({ user, handleDelete }) => {
   const { isAdmin } = useAuth();
   const age = calculateAge(user.birthdate);
@@ -37,20 +50,34 @@ const Card = ({ user, handleDelete }) => {
         alt={`Portrait ${user.firstname} ${user.lastname}`}
       />
       <div className="card-content">
-        <p className="card-cat">{user.category}</p>
+        <p
+          className="card-cat little-txt"
+          style={{ background: getColor(user.category) }}
+        >
+          {user.category}
+        </p>
         <h3>
           {user.lastname} {user.firstname}{" "}
           <span className="txt-light">(Age: {age} years)</span>
         </h3>
         <ul>
-          <li>{user.email}</li>
-          <li>{user.phone}</li>
-          <li>Anniversaire: {formattedBirthdate}</li>
+          <li className="flex-li">
+            <img className="icone" src="/icones/mail.png" />{" "}
+            <p className="pink-txt little-txt">{user.email}</p>
+          </li>
+          <li className="flex-li">
+            <img className="icone" src="/icones/phone.png" />{" "}
+            <p className="pink-txt little-txt">{user.phone}</p>
+          </li>
+          <li className="flex-li">
+            <img className="icone" src="/icones/cake.png" />{" "}
+            <p className="little-txt">Anniversaire: {formattedBirthdate}</p>
+          </li>
         </ul>
 
         {isAdmin && (
-          <div>
-            <NavLink to={"/collaborateurs/" + user._id}>
+          <div className="btn-group">
+            <NavLink to={"/collaborateur/" + user._id}>
               <button className="bg-red">éditer</button>
             </NavLink>
             <DeleteUser />

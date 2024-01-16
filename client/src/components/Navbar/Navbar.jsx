@@ -11,21 +11,34 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <li className="flex-li">
-        <img className="logo" src="/icones/logo.png" />
-        {isLoggedIn ? <NavLink to="/home">Intranet </NavLink> : <p>Intranet</p>}
+        {isLoggedIn ? (
+          <NavLink to="/home">
+            {" "}
+            <img className="logo" src="/icones/logo.png" />
+            Intranet
+          </NavLink>
+        ) : (
+          <li className="flex-li">
+            <img className="logo" src="/icones/logo.png" /> <p>Intranet</p>
+          </li>
+        )}
       </li>
       <ul>
         {isLoggedIn ? (
           <>
             <li className="flex-li">
-              <img className="icone icone-liste" src="/icones/liste.png" />
-              <NavLink to="/collaborateurs">Liste </NavLink>
+              <NavLink to="/collaborateurs">
+                <img className="icone icone-liste" src="/icones/liste.png" />
+                Liste{" "}
+              </NavLink>
             </li>
 
             {isAdmin && (
               <li className="flex-li">
-                <img className="icone icone-user" src="/icones/user.png" />
-                <NavLink to="/add">Ajouter</NavLink>
+                <NavLink to="/add">
+                  <img className="icone icone-user" src="/icones/user.png" />
+                  Ajouter
+                </NavLink>
               </li>
             )}
             <li className="flex-li">
