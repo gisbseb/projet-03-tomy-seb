@@ -110,14 +110,14 @@ export const login = async (req, res) => {
       .status(404)
       .json({ message: "L'email et le mot de passe ne corresponde pas." });
   }
+  console.log(user._id);
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
   delete user.password;
-
+  res.cookie("token", token, { httpOnly: true, secure: true });
   res.status(200).json({
     message: "Logged In",
     user: user.toObject({ getters: true }),
-    token: token,
   });
 };
 

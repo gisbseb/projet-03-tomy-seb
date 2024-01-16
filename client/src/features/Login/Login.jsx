@@ -5,8 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 const Login = () => {
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+    email: "admin@gmail.com",
+    password: "admin",
   });
   const { handleLogin, isLoggedIn } = useAuth();
   const handleChange = (e) => {
@@ -36,17 +36,8 @@ const Login = () => {
         Pour vous connecter à l'intranet, entrez votre identifiant et mot de
         passe
       </p>
-      <ul>
-        <li>
-          Identifiants: <br />
-          <span style={{ color: "red" }}>admin@gmail.com </span>
-        </li>
-        <li>
-          Mot de passe:
-          <br /> <span style={{ color: "red" }}>admin</span>
-        </li>
-      </ul>
-
+      <p style={{ color: "red" }}>Identiants: admin@gmail.com</p>
+      <p style={{ color: "red" }}>Mot de passe: admin</p>
       <form className="login-form form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Email :</label>

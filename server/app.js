@@ -6,11 +6,12 @@ import dbConnect from "./config/dbConnect.js";
 import userRoutes from "./routes/UserRoutes.js";
 import cors from "cors";
 import verifyJwt from "./middleware/verifyJwt.js";
+import cookieParser from "cookie-parser";
 // CONFIG
 dotenv.config();
 dbConnect();
 const app = express();
-
+app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 
