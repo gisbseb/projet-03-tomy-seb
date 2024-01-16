@@ -7,7 +7,7 @@ const FilterForm = ({ filters, setFilters, filterOptions }) => {
   };
 
   return (
-    <div className="filter-form">
+    <div className="search-form">
       <input
         type="text"
         name="string"
@@ -22,19 +22,19 @@ const FilterForm = ({ filters, setFilters, filterOptions }) => {
           value={filters.property}
           onChange={handleFitlerChange}
         >
-          <option value="">All</option>
+          <option value="">Tous</option>
           <option value="city">Ville</option>
           <option value="lastname">Nom</option>
         </select>
       </label>
-      <label>
-        Catégorie :
+      <label className="">
+        Categories :
         <select
           name="category"
           value={filters.category}
           onChange={handleFitlerChange}
         >
-          <option value="">All</option>
+          <option value="">Toutes</option>
           <option value="client">Client</option>
           <option value="marketing">Marketing</option>
           <option value="technique">Technique</option>
