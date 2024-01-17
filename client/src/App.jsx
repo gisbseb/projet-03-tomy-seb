@@ -1,18 +1,33 @@
 import "./App.scss";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout.jsx";
-import Collaborateurs from "./features/Homepage/Collaborateurs/Collaborateurs.jsx";
+import Collaborateurs from "./features/Collaborateurs/Collaborateurs.jsx";
+import Homepage from "./features/Homepage/Homepage.jsx";
+import Account from "./features/Account/Account.jsx";
+
+import Login from "./features/Login/Login.jsx";
+
+import { useAuth } from "./context/AuthContext.jsx";
+import AddUser from "./features/Users/AddUser/AddUser.jsx";
+import SingleCollaborateur from "./features/SingleCollaborateur/SingleCollaborateur.jsx";
+import NotFound from "./features/NotFound/NotFound.jsx";
 
 function App() {
+  const { isLoggedIn, isAdmin } = useAuth();
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<p>Login</p>} />
-        <Route path="home" element={<p>HOMEPAGE - ICI GET RANDOM USER</p>} />
-        <Route path="collaborateurs" element={<Collaborateurs />} />
-        <Route path="compte" element={<p>Profil - Get user/id</p>}>
-          <Route path="update/:id" element={<p>Update user</p>} />
-        </Route>
+        <Route index element={<Login />} />
+        {isLoggedIn && (
+          <>
+            <Route path="home" element={<Homepage />} />
+            <Route path="collaborateurs" element={<Collaborateurs />} />
+            <Route path="collaborateur/:id" element={<SingleCollaborateur />} />
+            <Route path="compte" element={<Account />}></Route>
+          </>
+        )}
+        <Route path="add" element={<AddUser />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

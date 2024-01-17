@@ -1,0 +1,38 @@
+.modal {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 500000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(44, 43, 43, 0.202);
+  top: 0;
+  left: 0;
+
+  .modal-content {
+    background: white;
+    padding: 2em;
+    position: relative;
+    display: grid;
+    gap: 2em;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    height: 2em;
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}

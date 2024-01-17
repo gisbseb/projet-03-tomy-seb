@@ -22,9 +22,6 @@ yarn-error.log
 .DS_Store
 Thumbs.db
 
-# Fichiers de configuration
-.env
-
 # Dossiers générés lors de la construction ou de la compilation
 /build
 /dist

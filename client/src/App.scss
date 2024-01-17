@@ -1,0 +1,29 @@
+h1 {
+  font-weight: bold;
+}
+.page {
+  text-align: center;
+  display: grid;
+  gap: 2em;
+  margin: 2em auto;
+
+  > p {
+    width: fit-content;
+    margin: auto;
+  }
+  .line {
+    max-width: 80%;
+    height: 1px;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.143);
+    margin: auto;
+  }
+}
+
+.pink-txt {
+  color: rgb(231, 120, 138);
+  text-decoration: underline;
+}
+.little-txt {
+  font-size: 0.9em;
+}
