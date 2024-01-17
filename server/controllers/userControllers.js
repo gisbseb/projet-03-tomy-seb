@@ -110,7 +110,7 @@ export const login = async (req, res) => {
       .status(404)
       .json({ message: "L'email et le mot de passe ne corresponde pas." });
   }
-  console.log(user._id);
+
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
   delete user.password;
@@ -170,12 +170,11 @@ export const updateUser = async (req, res, next) => {
   const salt = await bcrypt.genSalt();
   const passwordHash = await bcrypt.hash(password, salt);
 
-  //   user.id = user.id === id ? user.id : id;
   user.gender = gender ? gender : user.gender;
   user.firstname = user.firstname === firstname ? user.firstname : firstname;
   user.lastname = user.lastname === lastname ? user.lastname : lastname;
   user.email = user.email === email ? user.email : email;
-  // user.password = user.password === passwordHash ? user.password : passwordHash;
+
   user.password = password === user.password ? user.password : passwordHash;
   user.phone = user.phone === phone ? user.phone : phone;
   user.birthdate = user.birthdate === birthdate ? user.birthdate : birthdate;

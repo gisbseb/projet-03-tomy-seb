@@ -14,9 +14,6 @@ const UpdateUser = ({ user, showPassword }) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
   const handleUpdateUser = async (e) => {
     e.preventDefault();
     try {

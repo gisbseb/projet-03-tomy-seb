@@ -2,8 +2,10 @@ import { useState } from "react";
 import { REGISTER_URL } from "../../../utils/url";
 import UserForm from "../../../components/UserForm/userForm";
 import { useAuth } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -36,8 +38,7 @@ const AddUser = () => {
         credentials: "include",
       });
 
-      const responseData = await response.json();
-      console.log(responseData);
+      navigate("/collaborateurs");
     } catch (err) {
       console.log(err);
     }

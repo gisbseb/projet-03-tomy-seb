@@ -41,7 +41,8 @@ button:disabled {
   color: white;
 }
 
-input {
+input,
+select {
   outline: none;
   border: 1px solid rgba(128, 128, 128, 0.282);
   padding: 0.5em;
@@ -59,16 +60,39 @@ input {
   .form-group {
     gap: 0.5em;
 
-    margin: 0.5em auto 1em;
+    margin: 1em auto 2em;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
     justify-content: end;
+    position: relative;
+  }
+}
+.err-msg {
+  position: absolute;
+  top: 100%;
+}
+.form-group input:active + .err-msg,
+.form-group input:focus + .err-msg {
+  display: none;
+}
+
+.form-group:has(input:active),
+.form-group:has(input:focus) {
+  .err-msg {
+    display: none;
   }
 }
 
 .btn-submit {
   margin: auto;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }

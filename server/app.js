@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import dbConnect from "./config/dbConnect.js";
 import userRoutes from "./routes/UserRoutes.js";
 import cors from "cors";
-import verifyJwt from "./middleware/verifyJwt.js";
+
 import cookieParser from "cookie-parser";
 // CONFIG
 dotenv.config();
@@ -21,7 +21,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(verifyJwt);
+
 //ROUTES
 app.get("/", (req, res) => {
   res.send("Hello World");

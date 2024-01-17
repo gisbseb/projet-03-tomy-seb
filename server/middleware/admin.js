@@ -5,7 +5,7 @@ export const isAdmin = async (req, res, next) => {
 
   const user = await User.findById(userId);
 
-  if (!user?.isAdmin) {
+  if (!user.isAdmin) {
     return res.status(403).json({
       message: "Accès interdit. Vous n'avez pas les autorisations nécessaires.",
     });
