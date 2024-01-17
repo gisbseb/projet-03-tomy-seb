@@ -22,11 +22,19 @@ function App() {
           <>
             <Route path="home" element={<Homepage />} />
             <Route path="collaborateurs" element={<Collaborateurs />} />
-            <Route path="collaborateur/:id" element={<SingleCollaborateur />} />
+
             <Route path="compte" element={<Account />}></Route>
+            {isAdmin && (
+              <>
+                <Route path="add" element={<AddUser />} />
+                <Route
+                  path="collaborateur/:id"
+                  element={<SingleCollaborateur />}
+                />
+              </>
+            )}
           </>
         )}
-        <Route path="add" element={<AddUser />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
